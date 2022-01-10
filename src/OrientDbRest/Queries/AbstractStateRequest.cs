@@ -17,6 +17,8 @@ public class AbstractStateEntity
 
     [JsonProperty("out_AbstractAction")]
     public string[] OutAbstractActions { get; set; }
+
+    public string StateId { get; set; }
 }
 
 public class AbstractStateRequest : IRequest<AbstractStateEntity[]>

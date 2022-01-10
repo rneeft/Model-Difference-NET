@@ -9,10 +9,15 @@ using Org.XmlUnit.Builder;
 
 namespace MyApp;
 
+public record AbstractActionId(string Value);
 public record ModelIdentifier(string Value);
 public record ConcreteStateId(string Value);
+public record ConcreteActionId(string Value);
 public record ConcreteIDCustom(string Value);
 public record OrientDbId(string Value);
+public record AbstractStateId(string Value);
+
+
 public class Application
 {
     public string[] AbstractionAttributes { get; init; }
@@ -24,12 +29,13 @@ public class Application
 
 public class AbstractState
 {
-    public ConcreteStateId[] ConcreteStateIds { get; set; }
-    public ModelIdentifier ModelIdentifier { get; set; }
+    public AbstractStateId StateId { get; set; } = default!;
+    public ConcreteStateId[] ConcreteStateIds { get; set; } = Array.Empty<ConcreteStateId>();
+    public ModelIdentifier ModelIdentifier { get; set; } = default!;
     public bool IsInitial { get; set; }
     public int Counter { get; set; }
-    public string[] InAbstractActions { get; set; }
-    public string[] OutAbstractActions { get; set; }
+    public AbstractActionId[] InAbstractActions { get; set; } = Array.Empty<AbstractActionId>();
+    public AbstractActionId[] OutAbstractActions { get; set; } = Array.Empty<AbstractActionId>();
 }
 
 internal class Program

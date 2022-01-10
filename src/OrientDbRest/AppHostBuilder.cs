@@ -30,6 +30,7 @@ public class AppHostBuilder
         collection
             .AddMediatR(typeof(Program).Assembly)
             .AddSingleton<IApplicationBuilder, ApplicationBuilder>()
+            .AddSingleton<IDifferenceProvider, AbstractStateDifferenceProvider>();
             ;
 
         var uri = context.Configuration.GetRequiredSection("OrientDb:Url").Value;
